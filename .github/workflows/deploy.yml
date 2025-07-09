@@ -2,8 +2,7 @@ name: Deploy Azure Function App
 
 on:
   push:
-    branches:
-      -main
+    branches: -main
 
 jobs:
   build-and-deploy:
@@ -15,9 +14,8 @@ jobs:
       - name: Set up .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '9.0.x'
-      
-      
+          dotnet-version: "9.0.x"
+
       - name: Install Azure Functions Core Tools
         run: npm install -g azure-functions-core-tools@4 --unsafe-perm true
 
@@ -30,5 +28,3 @@ jobs:
           app-name: RandomAppFunction123
           package: ./RandomNumberFunction/bin/Release/net6.0
           publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
-
-
