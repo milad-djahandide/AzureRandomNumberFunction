@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random Number</title>
+</head>
+<body>
+    <h1>Get a Random Number</h1>
+    <button onclick="getNumber()">Generate</button>
+    <p id="result"></p>
+    <script>
+    async function getNumber() {
+        try {
+            const response = await fetch('http://localhost:7071/api/GenerateRandomNumber');
+            const data = await response.json();
+            document.getElementById('result').innerText = `Random Number: ${data.number}`;
+        } catch (error) {
+            document.getElementById('result').innerText = 'Error fetching number';
+            console.error(error);
+        }
+    }
+    </script>
+</body>
+</html>
